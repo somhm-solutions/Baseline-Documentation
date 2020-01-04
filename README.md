@@ -11,15 +11,7 @@
 		- *Header.sh*: Multiuse Header for individual code files.
 		- *Bash-Header.sh*: Simplified version of Header.sh with bash shebang filled.
 
-	* *Server(s)*:
-		* *Application*:
-		* *Database*:
-	* *Networking*:
-		* *DNS*: 
-		* *Routes*: 
-	* *Application Dependencies*:
-	* *Dependant Programs*:
-
+	
 ## **Basic Usage**:
 	* *Usage*:
 		"""
