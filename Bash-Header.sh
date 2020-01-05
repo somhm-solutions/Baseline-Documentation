@@ -1,25 +1,36 @@
 #/bin/bash
 # Title: Bash-Header.sh
 # Author: mmartin@omhm.org 
-# Desc: Download gpg key and verify file 
-# Usage: 
+# Desc:   
 <<COMMENT
 # Usage:
-    > Args:
+    * Args:
         - TITLE(1): Title of doc
         - AUTHOR(2): Author of doc
-        - TITLE: Output path
-    > Functions:
-    > Example:
+        - OUTPUT_PATH: Output path
+    * Functions:
+    * Example:
 
 COMMENT
 
 TITLE=$1;
-AUTHOR="mmartin@omhm.org";
+AUTHOR=$2;
+OUTPUT_PATH=$3;
 
 TAB="";
 
-printf "Now creating file...\nTitle: $TITLE\nAuthor: $AUTHOR\nOutput Path: $TITLE";
-printf "\n#/bin/bash\n# Title: $TITLE\n# Author: $AUTHOR \n# Desc:" > $TITLE;
-printf "\n<<COMMENT" >> $TITLE;
-printf ""$TAB" > Usage:> Args:$TAB> Functions:$TAB> Example:\nCOMMENT" >> $TITLE;
+# Num Args: for error prevention
+NUM_ARGS=3
+if [ $# -lt $NUM_ARGS ]
+  then
+    echo "ERROR: Missing Arguements"
+    printf "Reference:\n\t1) TITLE \n\t2) AUTHOR\n\t3) OUTPUT_PATH\n"
+    exit 1
+fi
+
+printf "Now creating file...\nTitle: $TITLE\nAuthor: $AUTHOR\nOutput Path: $OUTPUT_PATH$TITLE";
+printf "\n#/bin/bash\n# Title: $TITLE\n# Author: $AUTHOR \n# Desc:\n " >> $OUTPUT_PATH$TITLE;
+printf "\n<<COMMENT" >> $OUTPUT_PATH$TITLE;
+printf "\n\t- Usage: \n\t- Args:\n\t- Functions:\n\t- Example:\nCOMMENT" >> $OUTPUT_PATH$TITLE;
+
+

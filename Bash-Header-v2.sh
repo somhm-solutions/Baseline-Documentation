@@ -1,32 +1,31 @@
 #/bin/bash
-# Title: Header.sh
+# Title: Bash-Header.sh
 # Author: mmartin@omhm.org 
-# Desc:  
-# Usage: 
+# Desc:   
 <<COMMENT
 # Usage:
     * Args:
         - TITLE(1): Title of doc
         - AUTHOR(2): Author of doc
-        - TITLE: Output path
+        - OUTPUT_PATH: Output path
     * Functions:
     * Example:
 
 COMMENT
 
-# User Arguements/ Defaults
 TITLE=$1;
-path=$2
-AUTHOR=$3;
+AUTHOR=$2;
+OUTPUT_PATH=$3;
+
+TAB="";
 
 
 # Num Args: for error prevention
 NUM_ARGS=3
-if [ $# -lt $NUM_ARGS ]
-
+if [ $# -lt $NUM_ARGS]
   then
     echo "ERROR: Missing Arguements"
-    printf "Reference:\n\t1) TITLE \n\t2) AUTHOR\n\t3) PATH\n"
+    printf "Reference:\n\t1) TITLE \n\t2) AUTHOR\n\t3) OUTPUT_PATH\n"
     exit 1
 fi
 
@@ -36,9 +35,9 @@ printf "\n<<COMMENT" >> $OUTPUT_PATH;
 printf "\n\t- Usage: \n\t- Args:\n\t- Functions:\n\t- Example:\nCOMMENT" >> $OUTPUT_PATH;
 
 
-TAB="";
+printf "Now creating file...\nTitle: $TITLE\nAuthor: $AUTHOR\nOutput Path: $OUTPUT_PATH";
+printf "\n#/bin/bash\n# Title: $TITLE\n# Author: $AUTHOR \n# Desc: \n# Usage: " >> $OUTPUT_PATH;
+printf "\n<<COMMENT" >> $OUTPUT_PATH;
+printf ""$TAB"* Usage:* Args:$TAB* Functions:$TAB* Example:\nCOMMENT" >> $OUTPUT_PATH;
 
-printf "Now creating file...\n Title: $TITLE\nAuthor: $AUTHOR\nOutput Path: $TITLE";
-printf "\n#!$path \n#Title: $TITLE\n# Author: $AUTHOR \n# Desc:" > $TITLE;
-printf "\n<<COMMENT" >> $TITLE;
-printf "\n\t- Usage: \n\t- Args:\n\t- Functions:\n\t- Example:\nCOMMENT" >> $TITLE;
+

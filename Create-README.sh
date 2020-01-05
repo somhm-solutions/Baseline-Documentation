@@ -13,7 +13,7 @@ COMMENT
 
 # Repo Title Config
 REPO_NAME=$1;
-REPO_PATH=$2;
+
 
 
 # (Authorship & Licensing)
@@ -23,7 +23,14 @@ MAINTAINERS="";
 DEPARTMENT="DevOps";
 LICENSES="";
 
-
+# Num Args: for error prevention
+NUM_ARGS=1
+if [ $# -lt $NUM_ARGS ]
+  then
+    echo "ERROR: Missing Arguements"
+    printf "ARGS:\n1) REPO_NAME\n"
+    exit 1
+fi
 
 
 
@@ -46,7 +53,9 @@ function create_readme(){
     # Design
     printf "\n\n## **Design**:" >> "$FILE_NAME"$FILETYPE;
     printf "\n\t* *Purpose*:" >> "$FILE_NAME"$FILETYPE;
+    printf "\n\t* *Reqs*: ">> "$FILE_NAME"$FILETYPE;
     printf "\n\t* *Contents*:" >>  "$FILE_NAME"$FILETYPE;
+    
     printf "\n\t* *Server(s)*:\n\t\t* *Application*:\n\t\t* *Database*:" >>  "$FILE_NAME"$FILETYPE;
     printf "\n\t* *Networking*:\n\t\t* *DNS*: \n\t\t* *Routes*: ">>  "$FILE_NAME"$FILETYPE;
     printf "\n\t* *Application Dependencies*:" >> "$FILE_NAME"$FILETYPE;
@@ -74,5 +83,7 @@ function create_readme(){
     
 }
 
+
+
+
 create_readme;
-mv  "$FILE_NAME"$FILETYPE $REPO_PATH;
